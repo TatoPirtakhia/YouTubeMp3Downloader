@@ -29,6 +29,6 @@ export const DownloadVideo = async (link) => {
     window.URL.revokeObjectURL(url);
     linkElement.remove();
   } catch (error) {
-    console.log(error.response.data);
+    console.log(error);
   }
 };
