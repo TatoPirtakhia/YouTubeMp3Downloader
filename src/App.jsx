@@ -1,9 +1,14 @@
 import { useState } from "react";
-import {DownloadVideo} from "./routes/routes.js";
+import { DownloadVideo } from "./routes/routes.js";
 function App() {
   const [link, setLink] = useState("");
+  const isValid = (link) => {
+    const regex = new RegExp("^(https?://)?((www.)?youtube.com|youtu.be)/.+$");
+    if (link && regex.test(link) !== true) return false;
+    return true;
+  };
   const onClick = () => {
-    if (link !== "") {
+    if (isValid(link)) {
       DownloadVideo(link);
     }
   };
