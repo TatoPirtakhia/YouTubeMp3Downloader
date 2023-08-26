@@ -3,7 +3,7 @@ import axios from "axios";
 export const DownloadVideo = async (link) => {
   try {
     const titleResponse = await axios.post(
-      "https://downloadermp3.onrender.com/api/getTitle",
+      "http://localhost:3005/api/getTitle",
       {
         link: link,
       }
@@ -12,11 +12,11 @@ export const DownloadVideo = async (link) => {
     const title = titleResponse.data;
     
     const response = await axios.post(
-      "https://downloadermp3.onrender.com/api/downloadMusic",
+      "http://localhost:3005/api/downloadMusic",
       { link: link },
       { responseType: "blob" }
     );
-    
+    console.log(response)
     const blob = new Blob([response.data]);
     const url = window.URL.createObjectURL(blob);
 
