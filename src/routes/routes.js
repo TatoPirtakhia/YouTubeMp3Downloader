@@ -12,7 +12,7 @@ export const DownloadVideo = async (link) => {
     const title = titleResponse.data;
     
     const response = await axios.post(
-      "http://downloadermp3.onrender.com/api/downloadMusic",
+      "https://downloadermp3.onrender.com/api/downloadMusic",
       { link: link },
       { responseType: "blob" }
     );
