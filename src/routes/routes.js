@@ -2,7 +2,7 @@ import axios from "axios";
 export const getTitle = async (link) => {
   try {
     const titleResponse = await axios.post(
-      "http://localhost:3005/api/getTitle",
+      "https://downloadermp3.onrender.com/api/getTitle",
       {
         link: link,
       }
@@ -15,7 +15,7 @@ export const getTitle = async (link) => {
 export const DownloadVideo = async (link, title) => {
   try {
     const response = await axios.post(
-      "http://localhost:3005/api/downloadMusic",
+      "https://downloadermp3.onrender.com/api/downloadMusic",
       { link: link },
       { responseType: "blob" }
     );
