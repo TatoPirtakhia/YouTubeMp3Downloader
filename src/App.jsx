@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DownloadVideo } from "./routes/routes.js";
+import Svg from "./SVG/svg.jsx";
 function App() {
   const [link, setLink] = useState("");
   const isValid = (link) => {
@@ -15,15 +16,27 @@ function App() {
   return (
     <div className="w-full h-[100vh] flex flex-col items-center justify-center">
       <div className="flex flex-col gap-2">
-        <input
-          type="text"
-          name="text"
-          className="input w-[900px] h-[50px] rounded-lg"
-          placeholder="inser youtube link"
-          onChange={(e) => {
-            setLink(e.target.value);
-          }}
-        ></input>
+        <div className="flex">
+          <input
+            type="text"
+            name="text"
+            className="input w-[900px] h-[50px] rounded-lg"
+            placeholder="inser youtube link"
+            onChange={(e) => {
+              setLink(e.target.value);
+            }}
+          ></input>
+          <div className="ml-[-150px]">
+            <div className="btn-conteiner">
+              <a className="btn-content" href="#">
+                <span className="btn-title">NEXT</span>
+                <span className="icon-arrow">
+                 <Svg />
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
         <button className="cssbuttons-io-button" onClick={onClick}>
           <svg
             height="24"

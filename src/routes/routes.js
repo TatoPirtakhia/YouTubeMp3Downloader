@@ -8,7 +8,7 @@ export const DownloadVideo = async (link) => {
         link: link,
       }
     );
-    
+    console.log(titleResponse)
     const title = titleResponse.data;
     
     const response = await axios.post(
@@ -16,7 +16,6 @@ export const DownloadVideo = async (link) => {
       { link: link },
       { responseType: "blob" }
     );
-    console.log(response)
     const blob = new Blob([response.data]);
     const url = window.URL.createObjectURL(blob);
 
