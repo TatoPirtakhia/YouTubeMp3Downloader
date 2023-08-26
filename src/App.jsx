@@ -1,25 +1,36 @@
 import { useState } from "react";
-import { DownloadVideo } from "./routes/routes.js";
+import { DownloadVideo, getTitle } from "./routes/routes.js";
 import Svg from "./SVG/svg.jsx";
+import Delete from "./SVG/delete.jsx";
 function App() {
   const [link, setLink] = useState("");
+  const [validLink, setValidLink] = useState({});
+
   const isValid = (link) => {
     const regex = new RegExp("^(https?://)?((www.)?youtube.com|youtu.be)/.+$");
     if (link && regex.test(link) !== true) return false;
     return true;
   };
-  const onClick = () => {
+  const search = async () => {
     if (isValid(link)) {
-      DownloadVideo(link);
+      const response = await getTitle(link);
+      if (response) setValidLink(response.data);
+    }
+  };
+
+  const onClick = () => {
+    if (validLink.title) {
+      DownloadVideo(link, validLink.title);
     }
   };
   return (
     <div className="w-full h-[100vh] flex flex-col items-center justify-center">
       <div className="flex flex-col gap-2">
-        <div className="flex">
+        <div className="flex items-center">
           <input
             type="text"
             name="text"
+            value={link}
             className="input w-[900px] h-[50px] rounded-lg"
             placeholder="inser youtube link"
             onChange={(e) => {
@@ -27,16 +38,48 @@ function App() {
             }}
           ></input>
           <div className="ml-[-150px]">
-            <div className="btn-conteiner">
+            <div className="btn-conteiner" onClick={search}>
               <a className="btn-content" href="#">
-                <span className="btn-title">NEXT</span>
+                <span className="btn-title">Search</span>
                 <span className="icon-arrow">
-                 <Svg />
+                  <Svg />
                 </span>
               </a>
             </div>
           </div>
         </div>
+        {validLink.title && (
+          <div className="flex items-center justify-between">
+            <img src={validLink.image} alt="image" />
+            <div className=" flex flex-col gap-2">
+              <h2 className="text-white w-[500px]">
+                Title:{" "}
+                <span className="text-white font-bold">{validLink.title}</span>
+              </h2>
+              <h1 className="text-white">
+                Author:{" "}
+                <span className="text-white font-bold">{validLink.author}</span>
+              </h1>
+              <h1 className="text-white">
+                Length in minutes:{" "}
+                <span className="text-white font-bold">
+                  {validLink.durationMinutes}
+                </span>
+              </h1>
+            </div>
+            <div className="flex justify-center w-[150px]">
+              <button
+                className="button"
+                onClick={() => {
+                  setLink("");
+                  setValidLink({});
+                }}
+              >
+                <Delete />{" "}
+              </button>
+            </div>
+          </div>
+        )}
         <button className="cssbuttons-io-button" onClick={onClick}>
           <svg
             height="24"

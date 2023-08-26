@@ -1,6 +1,5 @@
 import axios from "axios";
-
-export const DownloadVideo = async (link) => {
+export const getTitle = async (link) => {
   try {
     const titleResponse = await axios.post(
       "http://localhost:3005/api/getTitle",
@@ -8,9 +7,13 @@ export const DownloadVideo = async (link) => {
         link: link,
       }
     );
-    console.log(titleResponse)
-    const title = titleResponse.data;
-    
+    return titleResponse
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const DownloadVideo = async (link, title) => {
+  try {
     const response = await axios.post(
       "http://localhost:3005/api/downloadMusic",
       { link: link },
