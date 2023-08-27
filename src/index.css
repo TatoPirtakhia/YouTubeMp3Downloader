@@ -24,7 +24,7 @@ body {
     color: #fff;
     background-color: rgb(28, 28, 30);
     box-shadow: 0 0 0.4vw rgba(0, 0, 0, 0.5), 0 0 0 0.15vw transparent;
-    border-radius:100px;
+    border-radius: 100px;
     border: none;
     outline: none;
     padding: 5px;
@@ -73,8 +73,6 @@ body {
     box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
   }
 
-
-
   .btn-conteiner {
     display: flex;
     justify-content: center;
@@ -83,13 +81,13 @@ body {
     --color-outline: #ff145b80;
     --color-shadow: #00000080;
   }
-  
+
   .btn-content {
     display: flex;
     align-items: center;
     padding: 5px 30px;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 30px;
     color: var(--color-text);
@@ -98,8 +96,9 @@ body {
     border-radius: 100px;
     box-shadow: 0 0 0.2em 0 var(--color-background);
   }
-  
-  .btn-content:hover, .btn-content:focus {
+
+  .btn-content:hover,
+  .btn-content:focus {
     transition: 0.5s;
     -webkit-animation: btn-content 1s;
     animation: btn-content 1s;
@@ -107,65 +106,65 @@ body {
     outline-offset: 0.2em;
     box-shadow: 0 0 0.4em 0 var(--color-background);
   }
-  
+
   .btn-content .icon-arrow {
     transition: 0.5s;
     margin-right: 0px;
     transform: scale(0.6);
   }
-  
+
   .btn-content:hover .icon-arrow {
     transition: 0.5s;
     margin-right: 25px;
   }
-  
+
   .icon-arrow {
     width: 20px;
     margin-left: 15px;
     position: relative;
     top: 6%;
   }
-    
+
   /* SVG */
   #arrow-icon-one {
     transition: 0.4s;
     transform: translateX(-60%);
   }
-  
+
   #arrow-icon-two {
     transition: 0.5s;
     transform: translateX(-30%);
   }
-  
+
   .btn-content:hover #arrow-icon-three {
     animation: color_anim 1s infinite 0.2s;
   }
-  
+
   .btn-content:hover #arrow-icon-one {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.6s;
   }
-  
+
   .btn-content:hover #arrow-icon-two {
     transform: translateX(0%);
     animation: color_anim 1s infinite 0.4s;
   }
-  
+
   /* SVG animations */
   @keyframes color_anim {
     0% {
       fill: white;
     }
-  
+
     50% {
       fill: var(--color-background);
     }
-  
+
     100% {
       fill: white;
     }
   }
-  
+
   /* Button animations */
   @-webkit-keyframes btn-content {
     0% {
@@ -173,14 +172,13 @@ body {
       outline-offset: ;
     }
   }
-  
+
   @keyframes btn-content {
     0% {
       outline: 0.2em solid var(--color-background);
       outline-offset: 0;
     }
   }
-
 
   .button {
     width: 50px;
@@ -194,50 +192,246 @@ body {
     justify-content: center;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
     cursor: pointer;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     overflow: hidden;
     position: relative;
   }
-  
+
   .svgIcon {
     width: 12px;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
   }
-  
+
   .svgIcon path {
     fill: white;
   }
-  
+
   .button:hover {
     width: 140px;
     border-radius: 50px;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     background-color: rgb(255, 69, 69);
     align-items: center;
   }
-  
+
   .button:hover .svgIcon {
     width: 50px;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     transform: translateY(60%);
   }
-  
+
   .button::before {
     position: absolute;
     top: -20px;
     content: "Delete";
     color: white;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     font-size: 2px;
   }
-  
+
   .button:hover::before {
     font-size: 13px;
     opacity: 1;
     transform: translateY(30px);
-    transition-duration: .3s;
+    transition-duration: 0.3s;
   }
 
+  /* loader */
+  #wifi-loader {
+    --background: #62abff;
+    --front-color: #4f29f0;
+    --back-color: #c3c8de;
+    --text-color: #414856;
+    width: 64px;
+    height: 64px;
+    border-radius: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  #wifi-loader svg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  #wifi-loader svg circle {
+    position: absolute;
+    fill: none;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: rotate(-100deg);
+    transform-origin: center;
+  }
+
+  #wifi-loader svg circle.back {
+    stroke: var(--back-color);
+  }
+
+  #wifi-loader svg circle.front {
+    stroke: var(--front-color);
+  }
+
+  #wifi-loader svg.circle-outer {
+    height: 86px;
+    width: 86px;
+  }
+
+  #wifi-loader svg.circle-outer circle {
+    stroke-dasharray: 62.75 188.25;
+  }
+
+  #wifi-loader svg.circle-outer circle.back {
+    animation: circle-outer135 1.8s ease infinite 0.3s;
+  }
+
+  #wifi-loader svg.circle-outer circle.front {
+    animation: circle-outer135 1.8s ease infinite 0.15s;
+  }
+
+  #wifi-loader svg.circle-middle {
+    height: 60px;
+    width: 60px;
+  }
+
+  #wifi-loader svg.circle-middle circle {
+    stroke-dasharray: 42.5 127.5;
+  }
+
+  #wifi-loader svg.circle-middle circle.back {
+    animation: circle-middle6123 1.8s ease infinite 0.25s;
+  }
+
+  #wifi-loader svg.circle-middle circle.front {
+    animation: circle-middle6123 1.8s ease infinite 0.1s;
+  }
+
+  #wifi-loader svg.circle-inner {
+    height: 34px;
+    width: 34px;
+  }
+
+  #wifi-loader svg.circle-inner circle {
+    stroke-dasharray: 22 66;
+  }
+
+  #wifi-loader svg.circle-inner circle.back {
+    animation: circle-inner162 1.8s ease infinite 0.2s;
+  }
+
+  #wifi-loader svg.circle-inner circle.front {
+    animation: circle-inner162 1.8s ease infinite 0.05s;
+  }
+
+  #wifi-loader .text {
+    position: absolute;
+    bottom: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: lowercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  #wifi-loader .text::before,
+  #wifi-loader .text::after {
+    content: attr(data-text);
+  }
+
+  #wifi-loader .text::before {
+    color: var(--text-color);
+  }
+
+  #wifi-loader .text::after {
+    color: var(--front-color);
+    animation: text-animation76 3.6s ease infinite;
+    position: absolute;
+    left: 0;
+  }
+
+  @keyframes circle-outer135 {
+    0% {
+      stroke-dashoffset: 25;
+    }
+
+    25% {
+      stroke-dashoffset: 0;
+    }
+
+    65% {
+      stroke-dashoffset: 301;
+    }
+
+    80% {
+      stroke-dashoffset: 276;
+    }
+
+    100% {
+      stroke-dashoffset: 276;
+    }
+  }
+
+  @keyframes circle-middle6123 {
+    0% {
+      stroke-dashoffset: 17;
+    }
+
+    25% {
+      stroke-dashoffset: 0;
+    }
+
+    65% {
+      stroke-dashoffset: 204;
+    }
+
+    80% {
+      stroke-dashoffset: 187;
+    }
+
+    100% {
+      stroke-dashoffset: 187;
+    }
+  }
+
+  @keyframes circle-inner162 {
+    0% {
+      stroke-dashoffset: 9;
+    }
+
+    25% {
+      stroke-dashoffset: 0;
+    }
+
+    65% {
+      stroke-dashoffset: 106;
+    }
+
+    80% {
+      stroke-dashoffset: 97;
+    }
+
+    100% {
+      stroke-dashoffset: 97;
+    }
+  }
+
+  @keyframes text-animation76 {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+
+    50% {
+      clip-path: inset(0);
+    }
+
+    100% {
+      clip-path: inset(0 0 0 100%);
+    }
+  }
 }
