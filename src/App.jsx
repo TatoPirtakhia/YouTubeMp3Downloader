@@ -3,21 +3,22 @@ import { DownloadVideo, getTitle } from "./routes/routes.js";
 import Svg from "./SVG/svg.jsx";
 import Delete from "./SVG/delete.jsx";
 import Loader from "./Loader/Loader.jsx";
+import Paste from "./SVG/pasteBtn.jsx";
 function App() {
   const [link, setLink] = useState("");
   const [validLink, setValidLink] = useState({});
   const [loader, setLoader] = useState(false);
-  const [task, setTask] = useState('Searching');
-
+  const [task, setTask] = useState("Searching");
+  const [copiedText, setCopiedText] = useState("");
   const isValid = (link) => {
-    if(link === '') return false
+    if (link === "") return false;
     const regex = new RegExp("^(https?://)?((www.)?youtube.com|youtu.be)/.+$");
     if (link && regex.test(link) !== true) return false;
-    
+
     return true;
   };
   const search = async () => {
-    setTask('Searching')
+    setTask("Searching");
     if (isValid(link)) {
       setLoader(true);
       const response = await getTitle(link);
@@ -30,23 +31,36 @@ function App() {
 
   const onClick = async () => {
     if (validLink.title) {
-      setTask('Downloading')
+      setTask("Downloading");
       setLoader(true);
       await DownloadVideo(link, validLink.title);
       setLoader(false);
     }
   };
+  const handlePasteClick = () => {
+    try {
+      const text = navigator.clipboard.readText();
+      console.log(text);
+      setCopiedText(text)
+    } catch (error) {
+      console.error("Error reading clipboard:", error);
+    }
+  };
+
   return (
-    <div className="w-full h-[100vh] flex flex-col items-center justify-center">
+    <div className="w-full h-[100vh] flex flex-col items-center justify-center ">
       <div className={`absolute top-[200px] ${loader ? "" : "hidden"}`}>
         <Loader task={task} />
       </div>
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center">
+      <div className="flex flex-col gap-2 ">
+        <div className="flex items-center relative">
+          <div className="absolute left-[620px]" onClick={handlePasteClick}>
+            <Paste />
+          </div>
           <input
             type="text"
             name="text"
-            value={link}
+            value={copiedText}
             className="input w-[900px] h-[50px] rounded-lg"
             placeholder="inser youtube link"
             onChange={(e) => {
