@@ -499,11 +499,11 @@ body {
     transition-duration: .7s;
   }
   
-  .Bttn:hover .text {
+  .Bttn:hover .textPaste {
     color: rgb(65, 64, 64);
   }
   
-  .Bttn:hover .svgIcon path {
+  .Bttn:hover .svgIconPaste path {
     fill: rgb(65, 64, 64);
   }
 }
