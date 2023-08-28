@@ -9,7 +9,6 @@ function App() {
   const [validLink, setValidLink] = useState({});
   const [loader, setLoader] = useState(false);
   const [task, setTask] = useState("Searching");
-  const [copiedText, setCopiedText] = useState("");
   const isValid = (link) => {
     if (link === "") return false;
     const regex = new RegExp("^(https?://)?((www.)?youtube.com|youtu.be)/.+$");
@@ -41,7 +40,7 @@ function App() {
     try {
       const text = navigator.clipboard.readText();
       console.log(text);
-      setCopiedText(text)
+      setLink(text)
     } catch (error) {
       console.error("Error reading clipboard:", error);
     }
@@ -60,7 +59,7 @@ function App() {
           <input
             type="text"
             name="text"
-            value={copiedText}
+            value={link}
             className="input w-[900px] h-[50px] rounded-lg"
             placeholder="inser youtube link"
             onChange={(e) => {
