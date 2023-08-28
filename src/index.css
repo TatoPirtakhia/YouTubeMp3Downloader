@@ -438,7 +438,7 @@ body {
 
 
 
-  .Btn {
+  .Bttn {
     width: 120px;
     height: 45px;
     background-color: rgb(65, 64, 64);
@@ -455,22 +455,22 @@ body {
     transition-duration: .5s;
   }
   
-  .text {
+  .textPaste {
     color: rgb(184, 236, 104);
     font-weight: 800;
     letter-spacing: 1.1px;
     z-index: 2;
   }
   
-  .svgIcon {
+  .svgIconPaste {
     z-index: 2;
   }
   
-  .svgIcon path {
+  .svgIconPaste path {
     fill: rgb(184, 236, 104);
   }
   
-  .Btn:hover {
+  .Bttn:hover {
     color: rgb(230, 255, 193);
   }
   
@@ -485,25 +485,25 @@ body {
     transition-duration: .5s;
   }
   
-  .Btn:hover .effect {
+  .Bttn:hover .effect {
     transform: scale(15);
     transform-origin: center;
     opacity: 1;
     transition-duration: .5s;
   }
   
-  .Btn:hover {
+  .Bttn:hover {
     box-shadow: 0px 0px 5px rgb(184, 236, 104),
     0px 0px 10px rgb(184, 236, 104),
     0px 0px 30px rgb(184, 236, 104);
     transition-duration: .7s;
   }
   
-  .Btn:hover .text {
+  .Bttn:hover .text {
     color: rgb(65, 64, 64);
   }
   
-  .Btn:hover .svgIcon path {
+  .Bttn:hover .svgIcon path {
     fill: rgb(65, 64, 64);
   }
 }
