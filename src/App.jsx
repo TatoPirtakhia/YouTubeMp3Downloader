@@ -36,9 +36,9 @@ function App() {
       setLoader(false);
     }
   };
-  const handlePasteClick = () => {
+  const handlePasteClick = async () => {
     try {
-      const text = navigator.clipboard.readText();
+      const text = await navigator.clipboard.readText();
       console.log(text);
       setLink(text)
     } catch (error) {
